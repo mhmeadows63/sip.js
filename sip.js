@@ -779,8 +779,11 @@ function makeUdpTransport(options, callback) {
   var address = options.address || '0.0.0.0';
   var port = options.port || 5060;
 
-  var socket = dgram.createSocket(net.isIPv6(address) ? 'udp6' : 'udp4', onMessage); 
-  socket.bind(port, address);
+  var socket;
+  if (options instanceof dgram.Socket)
+    socket = options.on('message', onMessage);
+  else
+    socket = dgram.createSocket(net.isIPv6(address) ? 'udp6' : 'udp4', onMessage).bind(port, address);
 
   function open(remote, error) {
     return {
@@ -811,6 +814,8 @@ function makeTransport(options, callback) {
     }
   }
   
+  if(options.pnp instanceof dgram.Socket)
+    protocols.PNP = makeUdpTransport(options.pnp, callbackAndLog);
   if(options.udp === undefined || options.udp)
     protocols.UDP = makeUdpTransport(options, callbackAndLog); 
   if(options.tcp === undefined || options.tcp)

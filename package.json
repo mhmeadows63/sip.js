@@ -1,9 +1,10 @@
 {
   "name": "sip",
-  "description": "Simple SIP implementation",
+  "description": "Simple SIP implementation (with support for multicast PnP)",
   "version": "0.0.6",
-  "homepage": "http://github.com/kirm/sip.js",
+  "homepage": "http://github.com/mhmeadows63/sip.js",
   "author": "Kirill Mikhailov <kirill.mikhailov@gmail.com>",
+  "contributors": ["Martin Meadows <martin@netconfigs.com>"],
   "main": "sip",
   "scripts": {
     "test": "./node_modules/.bin/coffee test/runtests.coffee"
@@ -15,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kirm/sip.js.git"
+    "url": "https://github.com/mhmeadows63/sip.js.git"
   },
   "engines": {
     "node": ">=0.2.2"

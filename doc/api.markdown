@@ -9,6 +9,7 @@ It features:
 * UDP, TCP and TLS based transport
 * Transactions
 * Digest Authentication
+* multicast UDP for SIP-PNP
 
 Example
 --------------------
@@ -115,6 +116,7 @@ Starts SIP protocol.
 * `ws_port` - port for WebSockets transport. To enable WebSockets transport, this field is required; no default provided.
 * `maxBytesHeaders` - (For TCP and TLS ) Max allowed length in bytes of a SIP message headers ( without content ). ; default: 60480.
 * `maxContentLength` - (For TCP and TLS ) Max allowed content length for a SIP message. ; default: 604800.
+* `pnp` - externally managed instance of dgram.Socket - see examples/pnp.js
 
 
 `onRequest` - callback to be called on new request arrival. It is expected to be a function of two arguments
@@ -135,6 +137,8 @@ If `message` is an non-`'ACK'` request then client transaction is created. Non-`
 If `message` is a response then server transaction is looked up and passed the message. There is no special handling of success
 responses to `'INVITE'` requests. It is not necessary because in sip.js `'INVITE'` server transactions are not destroyed on 2xx responses 
 but kept around for another 32 seconds (as per RFC 6026). Applications still need to resend success `'INVITE'` responses. 
+
+The `callback` receives the same arguments as `onRequest` described above
 
 ## Helper Functions
 

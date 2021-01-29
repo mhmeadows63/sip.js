@@ -1,15 +1,21 @@
 INTRO
 -----
 
-sip.js is a SIP stack for node.js. It implements tranaction and transport layers as described in RFC3261. 
+sip.js is a SIP stack for node.js. It implements tranaction and transport layers as described in RFC3261.
+
+A fork of the original https://www.npmjs.com/package/sip (2020-06-07) that adds support for:
+- multicast PnP using SUBSCRIBE/NOTIFY
 
 INSTALL
 -------
 
 Easiest way is npm.
   
-  npm install sip
+  npm install git+https://github.com/mhmeadows63/sip.js.git
 
+An example PnP server.
+
+  node_modules/sip/examples/pnp.js
 
 API
 ---
