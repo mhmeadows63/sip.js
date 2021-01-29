@@ -11,7 +11,7 @@ INSTALL
 
 Easiest way is npm.
   
-  npm install git+https://github.com/mhmeadows63/sip.js.git
+  npm install mhmeadows63/sip.js
 
 An example PnP server.
 
